@@ -1,5 +1,5 @@
 require_relative 'boot'
-require 'openssl'
+# require 'openssl'
 require 'rails/all'
 require 'csv'  
 
@@ -23,7 +23,7 @@ module Partimebee
     end
     config.autoload_paths += Dir["#{Rails.root}/app"]
     config.eager_load_paths << Rails.root.join('lib')
-    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+    # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end
 
 end
