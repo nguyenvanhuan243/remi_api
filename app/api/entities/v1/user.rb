@@ -1,0 +1,8 @@
+module API::Entities::V1
+  class User < API::Entities::V1::Base
+
+    expose :id, documentation: { type: 'Integer', desc: 'Id of user.' }
+    expose :email, documentation: { type: 'String', desc: 'Email of user.' }
+  end
+end
+  

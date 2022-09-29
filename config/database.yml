@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+development:
+  <<: *default
+  database: remitano_development
+test:
+  <<: *default
+  database: remitano_test
+production:
+  <<: *default
+  database: remitano_production
+  username: remitano
+  password: <%= ENV['DATABASE_PASSWORD'] %>
