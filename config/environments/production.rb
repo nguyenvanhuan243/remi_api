@@ -172,10 +172,9 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
-
-  routes.default_url_options = { :protocol => 'https', :host => '' }
+  routes.default_url_options = { :protocol => 'https', :host => 'api.parttimebee.tks' }
 
   # Do not dump schema after migrations.
-  config.action_mailer.default_url_options = { :host => '' }
+  config.action_mailer.default_url_options = { :host => 'https://api.parttimebee.tk' }
   config.action_mailer.delivery_method = :smtp
 end
