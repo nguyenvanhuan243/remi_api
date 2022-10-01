@@ -4,7 +4,11 @@ class API::V1::Movies < Grape::API
 
     desc 'Show movies',
       entity: API::Entities::V1::Movie
+    params do
+      optional :title, type: String, desc: 'youtube url'
+    end
     get do
+      return present Movie.filter_by_title(params[:title]).order('id DESC'), with: API::Entities::V1::Movie if params[:title].present?
       present Movie.order('id DESC'), with: API::Entities::V1::Movie
     end
 
