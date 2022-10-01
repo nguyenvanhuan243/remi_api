@@ -1,6 +1,8 @@
 class Movie < ApplicationRecord
   belongs_to :user
   has_many :likes
+  validates :embed_url, presence: true
+  validates :embed_url, uniqueness: true
 
   scope :filter_by_title, -> (search_key){
     search_key = search_key.downcase
