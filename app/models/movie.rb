@@ -51,10 +51,15 @@ class Movie < ApplicationRecord
     end
 
     if search_key == 'blockchain'
-      blockchain_list = ['blockchain', 'bitcoin', 'token']
-      return where("title iLIKE ?", "%#{gablockchain_listme_list[0]}%")
+      blockchain_list = ['blockchain', 'bitcoin', 'token', 'move to earn', 'gamefi', 'learn to earn', 'token', 'coin']
+      return where("title iLIKE ?", "%#{blockchain_list[0]}%")
         .or(where("title iLIKE ?", "%#{blockchain_list[1]}%"))
         .or(where("title iLIKE ?", "%#{blockchain_list[2]}%"))
+        .or(where("title iLIKE ?", "%#{blockchain_list[3]}%"))
+        .or(where("title iLIKE ?", "%#{blockchain_list[4]}%"))
+        .or(where("title iLIKE ?", "%#{blockchain_list[5]}%"))
+        .or(where("title iLIKE ?", "%#{blockchain_list[6]}%"))
+        .or(where("title iLIKE ?", "%#{blockchain_list[7]}%"))
     end
 
     if search_key == 'code'
