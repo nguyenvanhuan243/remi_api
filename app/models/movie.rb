@@ -94,10 +94,6 @@ class Movie < ApplicationRecord
     User.find_by(id: user_id).email
   end
 
-  def like
-    Like.find_by(user_id: user_id, movie_id: id)
-  end
-
   def like_list
     Like.where(movie_id: id)
   end
