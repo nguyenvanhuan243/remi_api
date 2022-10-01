@@ -18,6 +18,7 @@ module API
 
       mount API::V1::Users
       mount API::V1::Movies
+      mount API::V1::Likes
 
       add_swagger_documentation(api_version: self.version, hide_format: true, hide_documentation_path: true)
     end
