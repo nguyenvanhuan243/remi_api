@@ -31,7 +31,7 @@ class API::V1::Likes < Grape::API
       else
         movie.likes.update(user_id: user.id, status: params[:status])
       end
-      present user_like.status
+      present movie.likes.find_by(user_id: user.id).status
     end
   end
 end
