@@ -74,7 +74,7 @@ class Movie < ApplicationRecord
     end
 
     if search_key == 'remitano'
-      remitano_list = ['remitano', 'bitcoin', 'token', 'coin', 'thuanCapital' 'analytics']
+      remitano_list = ['remitano', 'bitcoin', 'token', 'coin', 'thuanCapital', 'analytics']
       return where("title iLIKE ?", "%#{remitano_list[0]}%")
         .or(where("title iLIKE ?", "%#{remitano_list[1]}%"))
         .or(where("title iLIKE ?", "%#{remitano_list[2]}%"))
