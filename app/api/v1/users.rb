@@ -39,6 +39,7 @@ class API::V1::Users < Grape::API
       requires :password, type: String, desc: 'User password'
     end
     post do
+      error!({ messages: 'Password min 6 characters' }, 422) if params[:password].length < 6
       params[:password] = Digest::MD5.hexdigest params[:password]
       @user = User.new(params)
       if @user.save
