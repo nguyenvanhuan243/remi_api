@@ -26,9 +26,9 @@ class API::V1::Likes < Grape::API
       error!("Movie Not Found with id #{params[:id]}", 404) if movie.nil?
       user_like = movie.likes.find_by(user_id: user.id)
       if user_like.nil?
-        movie.likes.create(user_id: user.id, status: params[:status])
+        movie.likes.create(user_id: user.id, status: params[:status].to_i)
       else
-        movie.likes.update(user_id: user.id, status: params[:status])
+        movie.likes.update(user_id: user.id, status: params[:status].to_i)
       end
       present movie.likes.find_by(user_id: user.id).status
     end
