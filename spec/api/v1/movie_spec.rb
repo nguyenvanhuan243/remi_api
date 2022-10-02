@@ -26,6 +26,16 @@ RSpec.describe Movie, type: :request do
       get '/api/v1/movies', params: { title: "Title" }
       expect(JSON.parse(response.body).count).to eq(Movie.count)
     end
+
+    it 'get movies with title OK' do
+      get '/api/v1/movies', params: { title: "Movie Title" }
+      expect(JSON.parse(response.body).count).to eq(Movie.count)
+    end
+
+    it 'get movies with title OK' do
+      get '/api/v1/movies', params: { title: "Movie" }
+      expect(JSON.parse(response.body).count).to eq(Movie.count)
+    end
   end
 
   # Create a movie
