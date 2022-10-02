@@ -13,5 +13,4 @@ class MovieService
       embed_url: video.embed_url
     }
   end
-
 end

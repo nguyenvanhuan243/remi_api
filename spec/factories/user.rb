@@ -1,8 +1,6 @@
 FactoryGirl.define do
   factory :user do
     email Faker::Internet.email
-    password 'Password1'
-    user_name 'viecdayroi'
-    full_name 'Viec day roi'
+    password Digest::MD5.hexdigest('123456')
   end
 end

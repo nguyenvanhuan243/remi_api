@@ -1,23 +1,22 @@
 class API::V1::Likes < Grape::API
   helpers API::V1::Helpers
   resource :likes do
-
     desc 'Count like by movie id',
-      entity: API::Entities::V1::Like
+         entity: API::Entities::V1::Like
     get '/movies/:id/likes' do
       movie = Movie.find_by(id: params[:id])
       { total_likes: movie.likes.likes.count }
     end
 
     desc 'Count dislike by movie id',
-      entity: API::Entities::V1::Like
+         entity: API::Entities::V1::Like
     get '/movies/:id/dislikes' do
       movie = Movie.find_by(id: params[:id])
       { total_dislikes: movie.likes.dislikes.count }
     end
 
     desc 'Like or Dislike movie',
-      entity: API::Entities::V1::Like
+         entity: API::Entities::V1::Like
     params do
       use :authorization_token
     end
