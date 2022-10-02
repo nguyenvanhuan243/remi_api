@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :movie do
-    user nil
     title 'MyString'
     description 'MyText'
+    embed_url 'Embed url'
   end
 end
