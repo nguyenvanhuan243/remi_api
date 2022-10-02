@@ -1,4 +1,3 @@
-
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -9,18 +8,18 @@ end
 # Documentation
 gem 'yard'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
-gem 'select2-rails'
 gem 'open_uri_redirections'
+gem 'rails', '~> 5.0.1'
 gem 'rubocop'
+gem 'select2-rails'
 
 # grape api
 gem 'grape'
 gem 'grape-entity'
-gem 'grape-swagger'
-gem 'grape-swagger-rails'
-gem 'grape-swagger-entity'
 gem 'grape-rails-cache'
+gem 'grape-swagger'
+gem 'grape-swagger-entity'
+gem 'grape-swagger-rails'
 
 # Cross domain
 gem 'rack-cors', require: 'rack/cors'
@@ -56,12 +55,12 @@ end
 group :development do
   # Access an IRB console on exception pages
   # or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'rails_best_practices'
+  gem 'web-console', '>= 3.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'figaro'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -96,19 +95,19 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test, :production do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails'
-  gem 'faker'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'rspec_junit_formatter'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'shoulda-matchers', '4.0.0.rc1'
-  gem 'rails-controller-testing' # If you are using Rails 5.x
   gem 'capybara'
-  gem 'site_prism'
-  gem 'email_spec'
   gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'rails-controller-testing' # If you are using Rails 5.x
+  gem 'shoulda-matchers', '4.0.0.rc1'
+  gem 'site_prism'
 end
 
 group :development do
@@ -116,8 +115,8 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'jwt'
 gem 'dotenv-rails'
 gem 'enumerize'
+gem 'jwt'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'video_info'
