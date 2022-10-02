@@ -15,8 +15,8 @@ RSpec.describe Movie, type: :request do
     end
   end
 
-   # Create a movie
-   describe 'POST /api/v1/movies' do
+  # Create a movie
+  describe 'POST /api/v1/movies' do
     context 'valid params' do
       it 'with valid data' do
         post '/api/v1/users/sign_in', params: { email: @user.email, password: '123456' }
