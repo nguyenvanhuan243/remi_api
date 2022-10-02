@@ -15,6 +15,19 @@ RSpec.describe Movie, type: :request do
     end
   end
 
+  # Get movie list by title
+  describe 'GET api/v1/movies' do
+    it 'get movies with title not found' do
+      get '/api/v1/movies', params: { title: "Not Found" }
+      expect(JSON.parse(response.body).count).to eq(0)
+    end
+
+    it 'get movies with title OK' do
+      get '/api/v1/movies', params: { title: "Title" }
+      expect(JSON.parse(response.body).count).to eq(Movie.count)
+    end
+  end
+
   # Create a movie
   describe 'POST /api/v1/movies' do
     context 'valid params' do
