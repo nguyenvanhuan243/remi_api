@@ -15,7 +15,8 @@ RSpec.describe Like, type: :request do
         post '/api/v1/users/sign_in', params: { email: @user.email, password: '123456' }
         expect(response).to be_success
         expect(JSON.parse(response.body)['access_token']).present?
-        post "/api/v1/likes/movies/#{@movie.id}", params: { 'status': 1 }, headers: { Authorization: JSON.parse(response.body)['access_token'] }
+        post "/api/v1/likes/movies/#{@movie.id}", params: { 'status': 1 },
+                                                  headers: { Authorization: JSON.parse(response.body)['access_token'] }
         expect(JSON.parse(response.body)).to eq('like')
       end
     end
@@ -28,7 +29,8 @@ RSpec.describe Like, type: :request do
         post '/api/v1/users/sign_in', params: { email: @user.email, password: '123456' }
         expect(response).to be_success
         expect(JSON.parse(response.body)['access_token']).present?
-        post "/api/v1/likes/movies/#{@movie.id}", params: { 'status': 0 }, headers: { Authorization: JSON.parse(response.body)['access_token'] }
+        post "/api/v1/likes/movies/#{@movie.id}", params: { 'status': 0 },
+                                                  headers: { Authorization: JSON.parse(response.body)['access_token'] }
         expect(JSON.parse(response.body)).to eq('dislike')
       end
     end
@@ -53,6 +55,4 @@ RSpec.describe Like, type: :request do
       end
     end
   end
-
-
 end
