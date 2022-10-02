@@ -3,7 +3,7 @@ class API::V1::Users < Grape::API
 
   resource :users do
     desc 'Show user list',
-      entity: API::Entities::V1::User
+         entity: API::Entities::V1::User
     params do
     end
     get do
@@ -11,7 +11,7 @@ class API::V1::Users < Grape::API
     end
 
     desc 'Get one user',
-      entity: API::Entities::V1::User
+         entity: API::Entities::V1::User
     params do
       use :authorization_token
     end
@@ -21,7 +21,7 @@ class API::V1::Users < Grape::API
     end
 
     desc 'Sign in',
-      entity: API::Entities::V1::User
+         entity: API::Entities::V1::User
     params do
       requires :email, type: String, desc: 'User email'
       requires :password, type: String, desc: 'User password'
@@ -33,27 +33,25 @@ class API::V1::Users < Grape::API
     end
 
     desc 'Create a new user',
-      entity: API::Entities::V1::User
+         entity: API::Entities::V1::User
     params do
       requires :email, type: String, desc: 'User email'
       requires :password, type: String, desc: 'User password'
     end
     post do
-      begin
-        params[:password] = Digest::MD5.hexdigest params[:password]
-        @user = User.new(params)
-        if @user.save
-          present @user, with: API::Entities::V1::User
-        else
-          error!({ messages: @user.errors.messages }, :unprocessable_entity)
-        end
-      rescue Exception => e
-        error!({ messages: e }, 400)
+      params[:password] = Digest::MD5.hexdigest params[:password]
+      @user = User.new(params)
+      if @user.save
+        present @user, with: API::Entities::V1::User
+      else
+        error!({ messages: @user.errors.messages }, :unprocessable_entity)
       end
+    rescue Exception => e
+      error!({ messages: e }, 400)
     end
 
     desc 'Change Password',
-      entity: API::Entities::V1::User
+         entity: API::Entities::V1::User
     params do
       use :authorization_token
       requires :current_password, type: String, desc: 'Current Password'
@@ -62,11 +60,11 @@ class API::V1::Users < Grape::API
     end
     post :change_password do
       user = authenticate_user!
-      if Digest::MD5.hexdigest(params[:current_password]) == user.password
-        return { success: true, message: 'Password has been changed' } if params[:new_password] == params[:confirm_password] && user.update_attributes(password: Digest::MD5.hexdigest(params[:new_password]))
+      if Digest::MD5.hexdigest(params[:current_password]) == user.password && (params[:new_password] == params[:confirm_password] && user.update_attributes(password: Digest::MD5.hexdigest(params[:new_password])))
+        return { success: true,
+                 message: 'Password has been changed' }
       end
       { success: false, message: 'Password has not been changed' }
     end
-
   end
 end
