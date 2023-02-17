@@ -15,10 +15,6 @@ jobs:
           RAILS_ENV: test
           REDIS_URL: redis://localhost:6379
           SECRET_KEY_BASE: db9f771130e52a01b1c243a02218eebe755c3d1f00e277213ede177107f0bc47380e1fecbb30dd1e64184ed4ab601ef3bf0c470cc7e06dcdf404c2dcf181d645
-          S3_BUCKET_NAME: demos3image
-          AWS_ACCESS_KEY_ID: AKIATXT3DTTXHHPDTLQO
-          AWS_SECRET_ACCESS_KEY: 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
-          AWS_REGION: ap-southeast-1
       - image: circleci/postgres:12.4
         environment:
           POSTGRES_USER: bitcoin_exchange_user
