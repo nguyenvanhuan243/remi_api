@@ -197,6 +197,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.10-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
+      racc (~> 1.4)
     oga (3.4)
       ast
       ruby-ll (~> 2.1)
@@ -372,6 +374,7 @@ PLATFORMS
   x86-mingw32
   x86-mswin32
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   byebug
