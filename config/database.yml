@@ -12,4 +12,4 @@ production:
   <<: *default
   database: remitano_production
   username: remitano
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_URL'] %>
