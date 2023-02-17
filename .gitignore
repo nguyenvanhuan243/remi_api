@@ -76,7 +76,6 @@ pickle-email-*.html
 *.old
 *.jar
 xerial*.*
-Gemfile.lock
 package-lock.json
 .byebug_history
 doc/api_swagger.yml
