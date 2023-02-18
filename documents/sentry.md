@@ -4,7 +4,7 @@ gem 'sentry-rails', '4.5.1'
 
 
 # Step 2: Create sentry.rb in config/initializers with this content:
-
+```
 Sentry.init do |config|
   config.dsn = 'https://493db188648740d7b8a7037cf5faf9d2@o4504698737983488.ingest.sentry.io/4504698738966528'
 
@@ -17,6 +17,7 @@ Sentry.init do |config|
     true
   end
 end
+```
 
 Note: Get code from this page: https://docs.sentry.io/platforms/ruby/guides/rails/
 
