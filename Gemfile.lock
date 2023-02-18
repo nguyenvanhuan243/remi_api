@@ -145,6 +145,9 @@ GEM
     grape-swagger-rails (0.3.1)
       railties (>= 3.2.12)
     htmlentities (4.3.4)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     iso8601 (0.9.1)
@@ -174,6 +177,7 @@ GEM
     mini_portile2 (2.8.1)
     minitest (5.17.0)
     multi_json (1.15.0)
+    multi_xml (0.6.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     mustermann-grape (1.0.2)
@@ -408,6 +412,7 @@ DEPENDENCIES
   grape-swagger
   grape-swagger-entity
   grape-swagger-rails
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
   jwt

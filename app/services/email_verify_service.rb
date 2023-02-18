@@ -10,6 +10,7 @@ class EmailVerifyService
     begin
       response = HTTParty.get("https://emailverifier.reoon.com/api/v1/verify?email=#{@email}&key=#{api_key}&mode=#{@mode}").parsed_response
       ::Sentry.capture_message("SENDING EMAIL BY EMAIL VERIFY: #{response['status']}") if response['status'] == 'error'
+      ::Sentry.capture_message("MISSING API KEY EMAIL VERIFY") unless ENV['EMAIL_VERIFIER_TOKEN'].present?
       response['status'] == 'safe'
     rescue => e
       ::Sentry.capture_exception(e)

@@ -27,7 +27,7 @@ class API::V1::Users < Grape::API
     end
     get :checking_email do
       email_service = EmailVerifyService.new(params[:email], 'power')
-      present email_service.valid
+      { valid_email: email_service.valid, message: email_service.message(true) }
     end
 
     desc 'Sign in',
