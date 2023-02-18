@@ -1,3 +1,4 @@
+# require "sentry-ruby"
 class EmailVerifyService
   def initialize(email, mode) # mode = quick || power
     @email = email
@@ -11,7 +12,7 @@ class EmailVerifyService
       ::Sentry.capture_message("SENDING EMAIL BY EMAIL VERIFY: #{response['status']}") if response['status'] == 'error'
       response['status'] == 'safe'
     rescue => e
-      Sentry.capture_exception(e)
+      ::Sentry.capture_exception(e)
     end
   end
 

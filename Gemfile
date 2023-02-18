@@ -121,3 +121,6 @@ gem 'enumerize'
 gem 'jwt'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'video_info'
+gem 'sentry-ruby', '4.5.1'
+gem 'sentry-rails', '4.5.1'
+gem 'newrelic_rpm'

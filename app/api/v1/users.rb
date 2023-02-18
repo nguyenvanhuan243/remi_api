@@ -20,6 +20,16 @@ class API::V1::Users < Grape::API
       present user, with: API::Entities::V1::User
     end
 
+    desc 'Verify User Email',
+         entity: API::Entities::V1::User
+    params do
+      requires :email, type: String, desc: 'User email'
+    end
+    get :checking_email do
+      email_service = EmailVerifyService.new(params[:email], 'power')
+      present email_service.valid
+    end
+
     desc 'Sign in',
          entity: API::Entities::V1::User
     params do
