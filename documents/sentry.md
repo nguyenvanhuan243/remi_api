@@ -29,7 +29,7 @@ Sentry.capture_message("test message")
 ```
 
 
-# How to using sentry
+# Step 4: How to using sentry
 ```
 begin
   response = HTTParty.get("https://emailverifier.reoon.com/api/v1/verify?email=#{@email}&key=#{api_key}&mode=#{@mode}").parsed_response
