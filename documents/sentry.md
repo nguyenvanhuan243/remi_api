@@ -1,6 +1,8 @@
 # Step 1: Install Gem
+```
 gem 'sentry-ruby', '4.5.1'
 gem 'sentry-rails', '4.5.1'
+```
 
 
 # Step 2: Create sentry.rb in config/initializers with this content:
@@ -22,7 +24,9 @@ end
 Note: Get code from this page: https://docs.sentry.io/platforms/ruby/guides/rails/
 
 # Step 3: Check Sentry is working or not.
+```
 Sentry.capture_message("test message")
+```
 
 
 # How to using sentry
