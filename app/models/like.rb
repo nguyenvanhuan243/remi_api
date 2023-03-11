@@ -8,8 +8,8 @@ class Like < ApplicationRecord
   validates :status, presence: true
 
   # == Scopes ===============================================================
-  scope :likes, -> { where(status: 1) }
-  scope :dislikes, -> { where(status: 0) }
+  scope :likes, -> { where(status: Like.statuses[:like]) }
+  scope :dislikes, -> { where(status: Like.statuses[:dislike]) }
 
   # == Relationships ========================================================
   belongs_to :movie
