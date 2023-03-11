@@ -7,12 +7,7 @@ class API::V1::Movies < Grape::API
       optional :title, type: String, desc: 'movie title'
     end
     get do
-      if params[:title].present?
-        return present Movie.filter_by_title(params[:title]).order('id DESC'),
-                       with: API::Entities::V1::Movie
-      end
-
-      present Movie.order('id DESC'), with: API::Entities::V1::Movie
+      present Movie.filter(params).order(id: :desc), with: API::Entities::V1::Movie
     end
 
     desc 'Create a movie',
