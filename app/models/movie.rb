@@ -104,4 +104,16 @@ class Movie < ApplicationRecord
   def total_dislikes
     likes(status: Like::statuses[:dislike]).size
   end
+
+  def self.count_movie_have_likes
+    query = <<-SQL
+      SELECT DISTINCT(movies.id), movies.description, likes.status, movies.title
+      FROM movies
+      INNER JOIN likes
+      ON movies.id = likes.movie_id
+      WHERE movies.id = likes.movie_id
+    SQL
+    query_data = ActiveRecord::Base.connection.exec_query(query)
+    query_data.count
+  end
 end
