@@ -11,5 +11,11 @@ module API::Entities::V1
     expose :total_dislikes do |movie, options|
       options[:total_likes][:dislikes].size
     end
+    expose :total_likes do |movie, options|
+      options[:total_likes][:likes].size
+    end
+    expose :like_list, using: API::Entities::V1::Like do |movie|
+      movie.likes
+    end
   end
 end
