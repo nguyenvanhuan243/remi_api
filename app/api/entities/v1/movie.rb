@@ -12,7 +12,7 @@ module API::Entities::V1
       options[:total_likes][:dislikes]["#{movie.id}"]&.size.to_i
     end
     expose :like_list, using: API::Entities::V1::Like do |movie, options|
-      options[:total_likes][:all_likes]["#{movie.id}"]
+      options[:total_likes][:all_likes]["#{movie.id}"] || []
     end
   end
 end
