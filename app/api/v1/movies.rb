@@ -8,13 +8,13 @@ class API::V1::Movies < Grape::API
     end
     get do
       movies = Movie.filter(params).order(id: :desc).includes(:likes)
-      movie_total_likes = movies.joins(:likes).where('likes.status = 1').group_by { |movie| "#{movie.id}" }
-      movie_total_dislikes = movies.joins(:likes).where('likes.status = 0').group_by { |movie| "#{movie.id}" }
-      movie_likes = movies.joins(:likes).group_by { |movie| "#{movie.id}" }
+      likes = movies.joins(:likes).where("likes.status = #{Like.statuses[:like]}").group_by { |movie| "#{movie.id}" }
+      dislikes = movies.joins(:likes).where("likes.status = #{Like.statuses[:dislike]}").group_by { |movie| "#{movie.id}" }
+      all_likes = Like.all.group_by { |like| "#{like.movie_id}" }
       present movies, with: API::Entities::V1::Movie, total_likes: {
-        likes: movie_total_likes,
-        dislikes: movie_total_dislikes,
-        movie_likes: movie_likes
+        likes: likes,
+        dislikes: dislikes,
+        all_likes: all_likes
       }
     end
 
