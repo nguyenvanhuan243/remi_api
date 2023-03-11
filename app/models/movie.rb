@@ -91,6 +91,8 @@ class Movie < ApplicationRecord
 
     return where('title iLIKE ?', "%#{search_key}%")
   }
+
+  # Instant Method
   def shared_by
     User.find_by(id: user_id).email
   end
