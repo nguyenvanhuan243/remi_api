@@ -7,7 +7,13 @@ class API::V1::Movies < Grape::API
       optional :title, type: String, desc: 'movie title'
     end
     get do
-      present Movie.filter(params).order(id: :desc), with: API::Entities::V1::Movie
+      movies = Movie.filter(params).order(id: :desc).includes(:likes)
+      movie_total_likes = movies.joins(:likes).where('likes.status = 1').group_by { |movie| "#{movie.id}" }
+      movie_total_dislikes = movies.joins(:likes).where('likes.status = 0').group_by { |movie| "#{movie.id}" }
+      present movies, with: API::Entities::V1::Movie, total_likes: {
+        likes: movie_total_likes,
+        dislikes: movie_total_dislikes
+      }
     end
 
     desc 'Create a movie',

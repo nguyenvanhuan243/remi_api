@@ -98,10 +98,10 @@ class Movie < ApplicationRecord
   end
 
   def total_likes
-    Like.where(status: 1, movie_id: id).count
+    likes(status: Like::statuses[:like]).size
   end
 
   def total_dislikes
-    Like.where(status: 0, movie_id: id).count
+    likes(status: Like::statuses[:dislike]).size
   end
 end

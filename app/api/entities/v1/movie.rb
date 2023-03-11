@@ -5,10 +5,11 @@ module API::Entities::V1
     expose :description, documentation: { type: 'String', desc: 'Movie Description' }
     expose :shared_by, documentation: { type: 'String', desc: 'Movie Description' }
     expose :embed_url, documentation: { type: 'String', desc: 'Movie Description' }
-    expose :total_likes, documentation: { type: 'String', desc: 'Movie Description' }
-    expose :total_dislikes, documentation: { type: 'String', desc: 'Movie Description' }
-    expose :like_list, using: API::Entities::V1::Like do |movie|
-      movie.likes
+    expose :total_likes do |movie, options|
+      options[:total_likes][:likes].size
+    end
+    expose :total_dislikes do |movie, options|
+      options[:total_likes][:dislikes].size
     end
   end
 end
