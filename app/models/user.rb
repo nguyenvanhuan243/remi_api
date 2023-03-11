@@ -12,10 +12,10 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   # == Custom validations =================
-  validate :email_validation
+  validate :custom_validate_email
 
   # == Instant Methods ========================================================
-  def email_validation
+  def custom_validate_email
     email_service = EmailVerifyService.new(email, 'power')
     errors.add(:email, email_service.message(true)) if !email_service.valid
   end
