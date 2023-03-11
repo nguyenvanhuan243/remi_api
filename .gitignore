@@ -82,3 +82,4 @@ doc/api_swagger.yml
 db/schema.rb
 schema.rb
 development.log
+.env
