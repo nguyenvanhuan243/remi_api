@@ -18,8 +18,7 @@ class API::V1::Movies < Grape::API
     end
     post do
       user = authenticate_user!
-      movie_params = MovieService.new(params[:url]).get_video_info
-      movie = user.movies.create(movie_params)
+      movie = user.movies.create(MovieService.new(params[:url]).video_info)
       error!({ messages: movie.errors.messages }, :unprocessable_entity) if movie.errors.messages.present?
       present movie, with: API::Entities::V1::Movie
     end
