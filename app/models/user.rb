@@ -8,8 +8,8 @@ class User < ApplicationRecord
 
   # == Validations ==========================================================
   validates :email, uniqueness: true
-  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   # == Custom validations =================
   validate :custom_validate_email
