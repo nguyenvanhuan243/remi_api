@@ -13,7 +13,7 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: bitcoin_exchange_user
           RAILS_ENV: test
-          VALIDATE_EMAIL: true
+          VALIDATE_EMAIL: false
           REDIS_URL: redis://localhost:6379
           SECRET_KEY_BASE: db9f771130e52a01b1c243a02218eebe755c3d1f00e277213ede177107f0bc47380e1fecbb30dd1e64184ed4ab601ef3bf0c470cc7e06dcdf404c2dcf181d645
           AUTH_SECRET: 290a53889889f22935806d9a3ec8b7b5022bff009b2e8f41e63c09d37c88c481db51aa60a542bf0f2b91039b474e9f76f48a91f7a29df40b50025f6e49d9783b
