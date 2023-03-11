@@ -53,7 +53,7 @@ class API::V1::Users < Grape::API
       params[:password] = Digest::MD5.hexdigest params[:password]
       @user = User.new(params)
       if @user.save
-        present @user, with: API::Entities::V1::User
+        return present @user, with: API::Entities::V1::User
       else
         error!({ messages: @user.errors.messages }, :unprocessable_entity)
       end
