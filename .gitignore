@@ -83,3 +83,4 @@ db/schema.rb
 schema.rb
 development.log
 .env
+env
