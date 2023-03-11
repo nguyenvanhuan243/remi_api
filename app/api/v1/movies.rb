@@ -10,9 +10,11 @@ class API::V1::Movies < Grape::API
       movies = Movie.filter(params).order(id: :desc).includes(:likes)
       movie_total_likes = movies.joins(:likes).where('likes.status = 1').group_by { |movie| "#{movie.id}" }
       movie_total_dislikes = movies.joins(:likes).where('likes.status = 0').group_by { |movie| "#{movie.id}" }
+      movie_likes = movies.joins(:likes).group_by { |movie| "#{movie.id}" }
       present movies, with: API::Entities::V1::Movie, total_likes: {
         likes: movie_total_likes,
-        dislikes: movie_total_dislikes
+        dislikes: movie_total_dislikes,
+        movie_likes: movie_likes
       }
     end
 
