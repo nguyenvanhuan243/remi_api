@@ -32,3 +32,5 @@ puts "Using to_proc: #{:hello.to_proc.call(trading)}"
 
 puts "Using method_missing: #{trading.any_method_you_want}"
 
+puts "Using eval #{eval("trading.hello")}"
+
