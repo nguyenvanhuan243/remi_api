@@ -25,16 +25,6 @@ gem 'select2-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'yard'
-
-group :development, :test do
-  gem 'byebug', platform: :mri
-end
-
-group :development do
-  gem 'rails_best_practices'
-  gem 'web-console', '>= 3.3.0'
-end
-
 gem 'coffee-rails', '~> 4.2'
 gem 'enumerize'
 gem 'figaro'
@@ -52,20 +42,21 @@ gem 'sentry-rails', '4.5.1'
 gem 'sentry-ruby', '4.5.1'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'uglifier', '>= 1.3.0'
 gem 'video_info'
+gem 'meilisearch'
 
 group :development do
   gem 'dotenv-rails'
   gem 'web-console', '>= 3.3.0'
+  gem 'rails_best_practices'
 end
 
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'email_spec'
-  gem 'rails-controller-testing' # If you are using Rails 5.x
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'site_prism'
 end

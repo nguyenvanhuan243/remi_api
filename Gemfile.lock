@@ -172,6 +172,8 @@ GEM
       net-pop
       net-smtp
     matrix (0.4.2)
+    meilisearch (0.25.1)
+      httparty (>= 0.17.1, < 0.22.0)
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
@@ -416,6 +418,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   jwt
+  meilisearch
   newrelic_rpm
   open_uri_redirections
   pg
