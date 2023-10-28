@@ -2,14 +2,15 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 development:
   <<: *default
-  database: remitano_development
+  url: <%= ENV['DATABASE_URL'] %>
+
 test:
   <<: *default
-  database: remitano_test
+  database: exchange_test
+
 production:
   <<: *default
-  database: remitano_production
-  username: remitano
-  password: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
