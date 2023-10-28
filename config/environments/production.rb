@@ -171,9 +171,9 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  routes.default_url_options = { protocol: 'https', host: 'remitano.onrender.com' }
+  routes.default_url_options = { protocol: 'https', host: ENV['BASE_URL'] }
 
   # Do not dump schema after migrations.
-  config.action_mailer.default_url_options = { host: 'https://remitano.onrender.com' }
+  config.action_mailer.default_url_options = { host: "https://#{ENV['BASE_URL']}" }
   config.action_mailer.delivery_method = :smtp
 end
