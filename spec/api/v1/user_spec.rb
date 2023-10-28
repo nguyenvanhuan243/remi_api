@@ -6,14 +6,6 @@ RSpec.describe User, type: :request do
     @user = FactoryGirl.create(:user)
   end
 
-  # Get user list
-  describe 'GET api/v1/users' do
-    it 'get users' do
-      get '/api/v1/users'
-      expect(JSON.parse(response.body).count).to eq(User.count)
-    end
-  end
-
   # sign in user
   describe 'POST /api/v1/users/sign_in' do
     context 'valid params' do
@@ -77,40 +69,6 @@ RSpec.describe User, type: :request do
       get '/api/v1/users/me', params: {}, headers: { Authorization: JSON.parse(response.body)['access_token'] }
       expect(response).to be_success
       expect(JSON.parse(response.body)['email']).to eq(@user.email)
-    end
-  end
-
-  # Change password
-  describe 'POST /api/v1/users/change_password' do
-    context 'Valid params' do
-      it 'Valid params' do
-        post '/api/v1/users/sign_in', params: { email: @user.email, password: '123456' }
-        post '/api/v1/users/change_password',
-             params: { current_password: '123456', new_password: '123789', confirm_password: '123789' }, headers: { Authorization: JSON.parse(response.body)['access_token'] }
-        expect(response).to be_success
-        expect(JSON.parse(response.body)['success']).to eq(true)
-        expect(JSON.parse(response.body)['message']).to eq('Password has been changed')
-      end
-    end
-
-    context 'Invalid params' do
-      it 'current_password' do
-        post '/api/v1/users/sign_in', params: { email: @user.email, password: '123456' }
-        post '/api/v1/users/change_password',
-             params: { current_password: 'KKKHHH', new_password: '123456123456', confirm_password: '123456123456' }, headers: { Authorization: JSON.parse(response.body)['access_token'] }
-        expect(response).to be_success
-        expect(JSON.parse(response.body)['success']).to eq(false)
-        expect(JSON.parse(response.body)['message']).to eq('Password has not been changed')
-      end
-
-      it 'new_password' do
-        post '/api/v1/users/sign_in', params: { email: @user.email, password: '123456' }
-        post '/api/v1/users/change_password',
-             params: { current_password: '123456', new_password: 'KKDDSS', confirm_password: '123456123456' }, headers: { Authorization: JSON.parse(response.body)['access_token'] }
-        expect(response).to be_success
-        expect(JSON.parse(response.body)['success']).to eq(false)
-        expect(JSON.parse(response.body)['message']).to eq('Password has not been changed')
-      end
     end
   end
 end

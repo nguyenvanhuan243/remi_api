@@ -2,6 +2,7 @@ require_relative 'boot'
 require 'openssl'
 require 'rails/all'
 require 'csv'
+require "action_cable/engine"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,8 +24,10 @@ module Partimebee
     end
     config.autoload_paths += Dir["#{Rails.root}/app"]
     config.eager_load_paths << Rails.root.join('lib')
-    if Rails.env == "development"
+    if Rails.env != "production"
       OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
     end
+    config.action_cable.mount_path = ENV.fetch('WEBSOCKET_MOUNT_PATH', '/cable')
+    config.action_cable.disable_request_forgery_protection = true
   end
 end
