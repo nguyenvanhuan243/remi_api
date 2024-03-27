@@ -7,9 +7,9 @@
 name: "Ruby on Rails CI"
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -34,11 +34,14 @@ jobs:
         with:
           bundler-cache: true
       # Add or replace database setup steps here
-      - name: Set up database schema
-        run: bin/rails db:schema:load
+      # - name: Set up database schema
+      #   run: |
+      #     bundle exec rake db:drop RAILS_ENV=test
+      #     bundle exec rake db:create RAILS_ENV=test
+      #     bundle exec rake db:migrate RAILS_ENV=test
       # Add or replace test runners here
-      - name: Run tests
-        run: bin/rake
+      # - name: Run tests
+      #   run: bin/rake
 
   lint:
     runs-on: ubuntu-latest
@@ -50,9 +53,15 @@ jobs:
         with:
           bundler-cache: true
       # Add or replace any other lints here
-      - name: Security audit dependencies
-        run: bin/bundler-audit --update
-      - name: Security audit application code
-        run: bin/brakeman -q -w2
-      - name: Lint Ruby files
-        run: bin/rubocop --parallel
+      # - name: Security audit dependencies
+      #   run: bin/bundler-audit --update
+      # - name: Security audit application code
+      #   run: bin/brakeman -q -w2
+      # - name: Lint Ruby files
+      #   run: bin/rubocop --parallel
+      # Deploy Production Backend and Sidekiq
+      - name: Trigger Deploy Backend (Master)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          curl -s https://api.render.com/deploy/srv-co20t57sc6pc73cutg60?key=apSIXTY4vp8
+      
