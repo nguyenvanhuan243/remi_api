@@ -48,6 +48,11 @@ gem 'meilisearch'
 gem 'pundit'
 gem 'google-cloud-storage'
 
+# sidekiq
+gem 'sidekiq'
+gem 'sidekiq-cron'
+gem 'sidekiq-gelf'
+
 group :development do
   gem 'dotenv-rails'
   gem 'web-console', '>= 3.3.0'

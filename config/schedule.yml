@@ -1,0 +1,4 @@
+remitano_update_price:
+  cron: "0 20 * * *"
+  class: "Remitano::UpdatePrice"
+  queue: default
