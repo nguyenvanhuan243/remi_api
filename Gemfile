@@ -53,10 +53,15 @@ gem 'sidekiq'
 gem 'sidekiq-cron'
 gem 'sidekiq-gelf'
 
+gem 'actioncable'
+gem 'rack-cors'
+gem "redis"
+
 group :development do
   gem 'dotenv-rails'
   gem 'web-console', '>= 3.3.0'
   gem 'rails_best_practices'
+  gem 'annotate'
 end
 
 group :test do
