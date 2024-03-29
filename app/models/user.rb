@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id               :integer          not null, primary key
+#  email            :string
+#  password         :string
+#  confirm_password :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
 # User
 class User < ApplicationRecord
   # == Extensions ===========================================================
