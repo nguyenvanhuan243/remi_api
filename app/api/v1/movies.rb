@@ -7,16 +7,8 @@ class API::V1::Movies < Grape::API
       optional :title, type: String, desc: 'movie title'
     end
     get do
-      movies = Movie.filter(params).order(id: :desc).includes(:likes)
-      ActionCable.server.broadcast("movie_channel", "Create new video")
-      likes = movies.joins(:likes).where("likes.status = #{Like.statuses[:like]}").group_by { |movie| "#{movie.id}" }
-      dislikes = movies.joins(:likes).where("likes.status = #{Like.statuses[:dislike]}").group_by { |movie| "#{movie.id}" }
-      all_likes = Like.all.group_by { |like| "#{like.movie_id}" }
-      present movies, with: API::Entities::V1::Movie, total_likes: {
-        likes: likes,
-        dislikes: dislikes,
-        all_likes: all_likes
-      }
+      movies = Movie.filter(params).order(id: :desc)
+      present movies, with: API::Entities::V1::Movie
     end
 
     desc 'Create a movie',

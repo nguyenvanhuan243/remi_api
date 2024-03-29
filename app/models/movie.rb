@@ -13,7 +13,6 @@
 class Movie < ApplicationRecord
   include Filterable
   belongs_to :user
-  has_many :likes, dependent: :destroy
   validates :embed_url, presence: true
   validates :embed_url, uniqueness: true
 
