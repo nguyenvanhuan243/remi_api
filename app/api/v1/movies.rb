@@ -28,7 +28,10 @@ class API::V1::Movies < Grape::API
     post do
       user = authenticate_user!
       movie = user.movies.create(MovieService.new(params[:url]).video_info)
-      ActionCable.server.broadcast("movie:4", "Hello")
+      ActionCable.server.broadcast("movie_channel", {
+        title: movie.title,
+        user: user.email
+      })
       error!({ messages: movie.errors.messages }, :unprocessable_entity) if movie.errors.messages.present?
       present movie, with: API::Entities::V1::Movie
     end
