@@ -5,6 +5,5 @@ class Timeout_Api
 end
 
 class RedisConst
-  URL = ENV.fetch('REDIS_URL',
-                  'rediss://red-co2g19821fec73asnucg:3dS5twfvvT3rB96XphF1vddRocKcFvzO@oregon-redis.render.com:6379')
+  URL = ENV["REDIS_URL"]
 end

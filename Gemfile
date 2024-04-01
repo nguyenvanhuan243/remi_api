@@ -56,7 +56,6 @@ gem 'rack-cors'
 gem "redis"
 
 group :development do
-  gem 'dotenv-rails'
   gem 'web-console', '>= 3.3.0'
   gem 'rails_best_practices'
   gem 'annotate'
@@ -71,10 +70,11 @@ group :test do
   gem 'site_prism'
 end
 
-group :development, :test, :production do
+group :development, :test do
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec_junit_formatter'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 end
