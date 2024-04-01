@@ -19,4 +19,12 @@ class Movie < ApplicationRecord
     User.find_by(id: user_id).email
   end
 
+  after_create_commit :clear_cache
+
+  private
+
+  # == Instant methods ============================================================
+  def clear_cache
+    Rails.cache.delete 'movie*'
+  end
 end

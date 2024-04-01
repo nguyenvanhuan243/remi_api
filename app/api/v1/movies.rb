@@ -7,8 +7,10 @@ class API::V1::Movies < Grape::API
       optional :title, type: String, desc: 'movie title'
     end
     get do
-      movies = Movie.all.order(id: :desc)
-      present movies, with: API::Entities::V1::Movie
+      Rails.cache.fetch("movies", expires_in: 120.minutes) do
+        movies = Movie.all.order(id: :desc)
+        present movies, with: API::Entities::V1::Movie
+      end
     end
 
     desc 'Create a movie',
