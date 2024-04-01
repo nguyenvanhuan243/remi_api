@@ -24,7 +24,7 @@ module Partimebee
     end
     config.autoload_paths += Dir["#{Rails.root}/app"]
     config.eager_load_paths << Rails.root.join('lib')
-    if Rails.env == "development"
+    if Rails.env != "production"
       OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
     end
     config.action_cable.mount_path = ENV.fetch('WEBSOCKET_MOUNT_PATH', '/cable')

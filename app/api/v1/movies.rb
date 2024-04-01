@@ -7,7 +7,7 @@ class API::V1::Movies < Grape::API
       optional :title, type: String, desc: 'movie title'
     end
     get do
-      movies = Movie.filter(params).order(id: :desc)
+      movies = Movie.all.order(id: :desc)
       present movies, with: API::Entities::V1::Movie
     end
 
@@ -18,14 +18,18 @@ class API::V1::Movies < Grape::API
       optional :url, type: String, desc: 'youtube url'
     end
     post do
-      user = authenticate_user!
-      movie = user.movies.create(MovieService.new(params[:url]).video_info)
-      ActionCable.server.broadcast("movie_channel", {
-        title: movie.title,
-        user: user.email
-      })
-      error!({ messages: movie.errors.messages }, :unprocessable_entity) if movie.errors.messages.present?
-      present movie, with: API::Entities::V1::Movie
+      begin
+        user = authenticate_user!
+        movie = user.movies.create(MovieService.new(params[:url]).video_info)
+        error!({ messages: movie.errors.messages }, :unprocessable_entity) if movie.errors.messages.present?
+        ActionCable.server.broadcast("movie_channel", {
+          title: movie.title,
+          user: user.email
+        })
+        present movie, with: API::Entities::V1::Movie
+      rescue
+        error!({ messages: "invalid video" }, :bad_request)
+      end
     end
   end
 end
