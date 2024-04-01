@@ -14,7 +14,6 @@ class Movie < ApplicationRecord
   include Filterable
   belongs_to :user
   validates :embed_url, presence: true
-  validates :embed_url, uniqueness: true
 
   def shared_by
     User.find_by(id: user_id).email
