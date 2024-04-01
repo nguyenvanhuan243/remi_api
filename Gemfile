@@ -52,9 +52,6 @@ gem 'sidekiq-cron'
 gem 'sidekiq-gelf'
 gem 'rack-cors'
 
-gem 'redis-rails', '~> 5'
-gem "redis", "~> 3.3"
-
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'rails_best_practices'
