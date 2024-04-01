@@ -11,12 +11,11 @@
 #  embed_url   :string
 #
 class Movie < ApplicationRecord
-  include Filterable
   belongs_to :user
   validates :embed_url, presence: true
 
   def shared_by
-    User.find_by(id: user_id).email
+    user.email
   end
 
   after_create_commit :clear_cache
@@ -25,6 +24,6 @@ class Movie < ApplicationRecord
 
   # == Instant methods ============================================================
   def clear_cache
-    Rails.cache.delete 'movie*'
+    Rails.cache.delete_matched 'movie*'
   end
 end

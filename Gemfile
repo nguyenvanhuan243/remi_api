@@ -75,3 +75,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'dotenv-rails'
 end
+gem 'redis', '~> 3.0'
+gem 'redis-rails'

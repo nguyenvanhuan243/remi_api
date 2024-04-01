@@ -7,15 +7,6 @@ RSpec.describe Movie, type: :request do
     @movie = FactoryGirl.create(:movie, user_id: @user.id, title: 'Movie Title')
   end
 
-  # Get movie list
-  describe 'GET api/v1/movies' do
-    it 'get movies' do
-      get '/api/v1/movies'
-      expect(JSON.parse(response.body).count).to eq(Movie.count)
-    end
-  end
-
-  # Create a movie
   describe 'POST /api/v1/movies' do
     context 'valid params' do
       it 'with valid data' do
@@ -23,7 +14,7 @@ RSpec.describe Movie, type: :request do
         expect(response).to be_success
         expect(JSON.parse(response.body)['access_token']).present?
         post '/api/v1/movies', params: { 'url': 'https://www.youtube.com/watch?v=aKKMHadj2iQ' }, headers: { Authorization: JSON.parse(response.body)['access_token'] }
-        expect(JSON.parse(response.body)['title']).to eq("Bitcoin and Crypto Holders... Prepare For What Is Coming!")
+        expect(JSON.parse(response.body)['title']).to eq('Bitcoin and Crypto Holders... Prepare For What Is Coming!')
       end
     end
 

@@ -4,13 +4,12 @@ class API::V1::Movies < Grape::API
     desc 'Show movies',
          entity: API::Entities::V1::Movie
     params do
-      optional :title, type: String, desc: 'movie title'
     end
     get do
-      Rails.cache.fetch("movies", expires_in: 120.minutes) do
-        movies = Movie.all.order(id: :desc)
-        present movies, with: API::Entities::V1::Movie
+      movies = Rails.cache.fetch("movies", expires_in: 120.minutes) do
+        Movie.includes(:user).all.order(id: :desc)
       end
+      present movies, with: API::Entities::V1::Movie
     end
 
     desc 'Create a movie',
@@ -24,10 +23,8 @@ class API::V1::Movies < Grape::API
         user = authenticate_user!
         movie = user.movies.create(MovieService.new(params[:url]).video_info)
         error!({ messages: movie.errors.messages }, :unprocessable_entity) if movie.errors.messages.present?
-        ActionCable.server.broadcast("movie_channel", {
-          title: movie.title,
-          user: user.email
-        })
+        # Remitano::BroadcastMovieWorker.perform_async(movie.id)
+        Remitano::BroadcastMovieWorker.new.perform(movie.id)
         present movie, with: API::Entities::V1::Movie
       rescue
         error!({ messages: "invalid video" }, :bad_request)

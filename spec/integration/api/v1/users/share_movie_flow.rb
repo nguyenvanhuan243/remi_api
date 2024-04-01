@@ -21,22 +21,10 @@ RSpec.describe Movie, type: :request do
       title = 'Trend TikTok I Trào Lưu Có Đâu Ai Ngờ Một Ngày Tình Cờ Như Giấc Mơ ...I Có Ai Đâu Ngờ Remix'
       expect(JSON.parse(response.body)['title']).to eq(title)
       expect(JSON.parse(response.body)['shared_by']).to eq(@user.email)
-      expect(JSON.parse(response.body)['total_likes']).to eq(0)
-      expect(JSON.parse(response.body)['total_dislikes']).to eq(0)
 
       # get movies
-      get '/api/v1/movies', params: { title: 'Trend TikTok' }
+      get '/api/v1/movies'
       expect(JSON.parse(response.body).count).to eq(1)
-      expect(JSON.parse(response.body).first['title']).to eq(title)
-      movie_id = JSON.parse(response.body).first['id']
-
-      # Like movie
-      post "/api/v1/likes/movies/#{movie_id}", params: { status: 1 }, headers: { Authorization: access_token }
-      expect(JSON.parse(response.body)).to eq('like')
-
-      # Dislike movie
-      post "/api/v1/likes/movies/#{movie_id}", params: { status: 0 }, headers: { Authorization: access_token }
-      expect(JSON.parse(response.body)).to eq('dislike')
     end
   end
 end

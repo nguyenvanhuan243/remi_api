@@ -1,0 +1,8 @@
+---
+:verbose: false
+development:
+  :concurrency: 20
+production:
+  :concurrency: 20
+:queues:
+  - [default, 3]
