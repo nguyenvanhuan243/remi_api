@@ -53,6 +53,7 @@ gem 'sidekiq-gelf'
 
 gem 'actioncable'
 gem 'rack-cors'
+gem 'redis-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
