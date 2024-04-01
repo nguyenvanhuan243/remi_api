@@ -50,8 +50,6 @@ gem 'pundit'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 gem 'sidekiq-gelf'
-
-gem 'actioncable'
 gem 'rack-cors'
 
 gem 'redis-rails', '~> 5'

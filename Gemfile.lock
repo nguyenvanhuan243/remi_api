@@ -447,7 +447,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  actioncable
   annotate
   byebug
   capybara
