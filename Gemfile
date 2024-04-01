@@ -54,9 +54,7 @@ gem 'sidekiq-gelf'
 gem 'actioncable'
 gem 'rack-cors'
 
-gem 'redis'
-gem 'redis-store'
-gem 'redis-rails'
+gem 'redis-rails', '~> 5'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
