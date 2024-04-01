@@ -53,6 +53,9 @@ gem 'sidekiq-gelf'
 
 gem 'actioncable'
 gem 'rack-cors'
+
+gem 'redis'
+gem 'redis-store'
 gem 'redis-rails'
 
 group :development do

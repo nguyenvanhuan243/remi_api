@@ -474,7 +474,9 @@ DEPENDENCIES
   rails (~> 5.0.1)
   rails-controller-testing
   rails_best_practices
+  redis
   redis-rails
+  redis-store
   rspec-rails
   rspec_junit_formatter
   rubocop
