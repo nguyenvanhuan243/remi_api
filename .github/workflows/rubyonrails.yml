@@ -24,6 +24,7 @@ jobs:
           POSTGRES_PASSWORD: password
     env:
       RAILS_ENV: test
+      AUTH_SECRET: 3b787120af4ff7a12839d58a07d96349da9f9f1bdbdd92097d5d72f4083f6183bb3c7c848ddc8b5d474007e717b39d75da193e25b101d099bc9544dfd8fbe572
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
       SECRET_KEY_BASE: db9f771130e52a01b1c243a02218eebe755c3d1f00e277213ede177107f0bc47380e1fecbb30dd1e64184ed4ab601ef3bf0c470cc7e06dcdf404c2dcf181d645
     steps:
