@@ -23,8 +23,8 @@ class API::V1::Movies < Grape::API
         user = authenticate_user!
         movie = user.movies.create(MovieService.new(params[:url]).video_info)
         error!({ messages: movie.errors.messages }, :unprocessable_entity) if movie.errors.messages.present?
-        # Remitano::BroadcastMovieWorker.perform_async(movie.id)
-        Remitano::BroadcastMovieWorker.new.perform(movie.id)
+        Remitano::BroadcastMovieWorker.perform_async(movie.id)
+        # Remitano::BroadcastMovieWorker.new.perform(movie.id)
         present movie, with: API::Entities::V1::Movie
       rescue
         error!({ messages: "invalid video" }, :bad_request)
