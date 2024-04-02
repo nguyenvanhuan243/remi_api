@@ -11,9 +11,6 @@
 #
 # User
 class User < ApplicationRecord
-  # == Extensions ===========================================================
-  extend Enumerize
-
   # == Relationships ========================================================
   has_many :movies, dependent: :destroy
 
