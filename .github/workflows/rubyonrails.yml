@@ -34,14 +34,14 @@ jobs:
         with:
           bundler-cache: true
       # Add or replace database setup steps here
-      # - name: Set up database schema
-      #   run: |
-      #     bundle exec rake db:drop RAILS_ENV=test
-      #     bundle exec rake db:create RAILS_ENV=test
-      #     bundle exec rake db:migrate RAILS_ENV=test
+      - name: Set up database schema
+        run: |
+          bundle exec rake db:drop RAILS_ENV=test
+          bundle exec rake db:create RAILS_ENV=test
+          bundle exec rake db:migrate RAILS_ENV=test
       # Add or replace test runners here
-      # - name: Run tests
-      #   run: bin/rake
+      - name: Run tests
+        run: bin/rake
 
   lint:
     runs-on: ubuntu-latest
