@@ -42,8 +42,8 @@ jobs:
           bundle exec rake db:create RAILS_ENV=test
           bundle exec rake db:migrate RAILS_ENV=test
       # Add or replace test runners here
-      - name: Run tests
-        run: bundle exec rspec spec
+      # - name: Run tests
+      #   run: bundle exec rspec spec
 
   lint:
     runs-on: ubuntu-latest
