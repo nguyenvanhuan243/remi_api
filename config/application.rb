@@ -1,21 +1,11 @@
 require_relative 'boot'
 require 'openssl'
 require 'rails/all'
-require 'csv'
 require "action_cable/engine"
-
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Partimebee
+module Remitano
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-    # add app/assets/fonts to the asset path
-    # config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    # config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'

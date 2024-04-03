@@ -8,9 +8,14 @@ services:
     volumes:
       - .:/app
     environment:
+      - SIDEKIQ_USERNAME=admin
+      - SIDEKIQ_PASSWORD=123456
       - RAILS_ENV=development
       - REDIS_URL=redis://redis:6379/0
       - DATABASE_URL=postgresql://postgres:example@db:5432/app_development
+      - SECRET_KEY_BASE=816011313c3963c5d79a619bcf8de8b9399f181de53bf7e563f583162ae484b961470ef59224796254111383a8956e19496b75d0ab1d96541e9b037602bbebec
+      - AUTH_SECRET=3b787120af4ff7a12839d58a07d96349da9f9f1bdbdd92097d5d72f4083f6183bb3c7c848ddc8b5d474007e717b39d75da193e25b101d099bc9544dfd8fbe572
+
     depends_on:
       - db
       - redis
