@@ -63,16 +63,18 @@ npm install node-sass@4.14.1
 npm install
 npm run build:dll
 npm start
-localhost:3000
 ```
+Access front end: http://localhost:3000
 - Set up backend
 ```code
 git clone https://github.com/nguyenvanhuan243/remi_api
 cd remi_api
 mv .env_localhost .env
 docker-compose up
-localhost:3001
 ```
+Access backend: http://localhost:3001
+Api: http://localhost:3001/swagger
+Sidekiq: http://localhost:3001/sidekiq
 Run test
 ```code
 cd remi_api
