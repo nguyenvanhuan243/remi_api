@@ -51,7 +51,6 @@ docker-compose up
 - Dont need this step because we are using docker.
 
 ## 5. Running-Application
-- Start docker and start front end and backend code.
 - Set up front end
 ```code
 git clone https://github.com/nguyenvanhuan243/remi_fe
