@@ -57,7 +57,12 @@ docker-compose up
 git clone https://github.com/nguyenvanhuan243/remi_fe
 cd remi_fe
 mv .env_localhost .env
-docker-compose up
+nvm use 14
+npm uninstall node-sass
+npm install node-sass@4.14.1
+npm install
+npm run build:dll
+npm start
 localhost:3000
 ```
 - Set up backend
