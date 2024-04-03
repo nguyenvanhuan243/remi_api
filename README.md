@@ -72,9 +72,10 @@ cd remi_api
 mv .env_localhost .env
 docker-compose up
 ```
-Access backend: http://localhost:3001
-Api: http://localhost:3001/swagger
-Sidekiq: http://localhost:3001/sidekiq
+Access backend: [http://localhost:3001](http://localhost:3001)
+Api: [http://localhost:3001/swagger](http://localhost:3001/swagger)
+Sidekiq: [http://localhost:3001/sidekiq](http://localhost:3001/sidekiq)
+
 Run test
 ```code
 cd remi_api
