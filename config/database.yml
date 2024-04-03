@@ -9,7 +9,7 @@ development:
 
 test:
   <<: *default
-  database: exchange_test
+  database: remitano_database_testing
 
 production:
   <<: *default

@@ -29,11 +29,15 @@
 - Set up front end
 ```code
 git clone https://github.com/nguyenvanhuan243/remi_fe
+cd remi_fe
+mv .env_localhost .env
 docker-compose up
 ```
 - Set up backend
 ```code
 git clone https://github.com/nguyenvanhuan243/remi_api
+cd remi_api
+mv .env_localhost .env
 docker-compose up
 ```
 
@@ -55,8 +59,17 @@ localhost:3000
 ```code
 git clone https://github.com/nguyenvanhuan243/remi_api
 cd remi_api
+mv .env_localhost .env
 docker-compose up
 localhost:3001
+```
+Run test
+```code
+cd remi_api
+mv .env_localhost .env
+RAILS_ENV=test rake db:create 
+RAILS_ENV=test rake db:migrate
+bundle exec rspec spec
 ```
 
 ## 6. Docker-Deployment
