@@ -52,7 +52,7 @@ docker-compose up
 
 ## 5. Running-Application
 - Start docker and start front end and backend code.
-- Set up front end
+Set up front end
 ```code
 git clone https://github.com/nguyenvanhuan243/remi_fe
 cd remi_fe
@@ -65,7 +65,7 @@ npm run build:dll
 npm start
 ```
 - Access front end: http://localhost:3000
-- Set up backend
+Set up backend
 ```code
 git clone https://github.com/nguyenvanhuan243/remi_api
 cd remi_api
