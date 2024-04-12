@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: reactions
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  movie_id      :integer
+#  reaction_type :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
 class Reaction < ApplicationRecord
   enum reaction_type: {
     like: 0

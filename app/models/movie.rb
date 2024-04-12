@@ -13,6 +13,8 @@
 class Movie < ApplicationRecord
   belongs_to :user
   validates :embed_url, presence: true
+  has_many :reactions, dependent: :destroy
+  has_many :reacted_users, through: :reactions, source: 'user'
 
   def shared_by
     user.email
