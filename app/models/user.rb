@@ -13,6 +13,7 @@
 class User < ApplicationRecord
   # == Relationships ========================================================
   has_many :movies, dependent: :destroy
+  has_many :reactions, dependent: :destroy
 
   # == Validations ==========================================================
   validates :email, uniqueness: true
