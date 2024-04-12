@@ -15,6 +15,6 @@ class Remitano::BroadcastMovieWorker
     }
     ActionCable.server.broadcast('movie_channel', content)
   rescue StandardError => e
-    Sentry.capture_exception(e)
+    puts "BroadcastMovieWorker #{e}"
   end
 end
