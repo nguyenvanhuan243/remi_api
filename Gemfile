@@ -17,8 +17,6 @@ gem 'jwt'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.1'
-gem 'sentry-rails', '4.5.1'
-gem 'sentry-ruby', '4.5.1'
 gem 'video_info'
 
 # sidekiq
