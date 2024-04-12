@@ -12,6 +12,16 @@ class API::V1::Movies < Grape::API
       present movies, with: API::Entities::V1::Movie
     end
 
+    desc 'Get movie liked',
+         entity: API::Entities::V1::Movie
+    params do
+      use :authorization_token
+    end
+    get "/liked" do
+      user = authenticate_user!
+      present user.reacted_movies, with: API::Entities::V1::Movie
+    end
+
     desc 'Check user liked movie',
          entity: API::Entities::V1::Movie
     params do
