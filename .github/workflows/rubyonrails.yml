@@ -65,6 +65,5 @@ jobs:
       - name: Trigger Deploy Backend (Master)
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
-          curl -s https://api.render.com/deploy/srv-co20t57sc6pc73cutg60?key=apSIXTY4vp8
-          curl -s https://api.render.com/deploy/srv-co2g1gsf7o1s73ci5t2g?key=1MBb3BbA_PU
+          curl -s https://api.render.com/deploy/srv-cod14q8l5elc73fffin0?key=D-_0BV4J9CI
       

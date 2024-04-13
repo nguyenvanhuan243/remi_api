@@ -92,9 +92,9 @@ https://hub.docker.com/r/nguyenvanhuan243/remi_frontend
 - Docker build image, docker push in here: https://github.com/nguyenvanhuan243/remi_fe/blob/master/.github/workflows/deploy_server.js.yml
 
 ## 7. Usage
-- Front end (Use docker Image): https://remi-fe-docker-deployment.onrender.com
-- Backend API: https://remitano-backend-api.onrender.com/swagger
-- Sidekiq: https://remitano-backend-api.onrender.com/sidekiq
+- Front end (Use docker Image): https://remi-frontend-5bis.onrender.com
+- Backend API: https://remi-api.onrender.com/swagger
+- Sidekiq: https://remi-api.onrender.com/sidekiq
 (sidekiq info: admin|123456)
 - Login/Register: Access to this page and register after login to share video: https://remi-fe-docker-deployment.onrender.com/
 
