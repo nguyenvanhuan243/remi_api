@@ -7,14 +7,13 @@ module Interactors
     class CreateAddress < Base
       # Interactors::BlockchainWallet::CreateAddress.new.call
       def call
-        create
+        HTTParty.get(create_address_url).parsed_response
       end
 
       private
 
-      def create
-        new_address_url = "#{@url}/blockchain/getNewWallet"
-        HTTParty.get(new_address_url).parsed_response
+      def create_address_url
+        "#{@url}/blockchain/getNewWallet"
       end
     end
   end
