@@ -41,5 +41,15 @@ class API::V1::Users < Grape::API
     rescue Exception => e
       error!({ messages: e }, 400)
     end
+
+    desc 'Get user assets by token',
+      entity: API::Entities::V1::UserAsset
+    params do
+      use :authorization_token
+    end
+    get '/assets' do
+      user = authenticate_user!
+      present user.assets, with: API::Entities::V1::UserAsset
+    end
   end
 end
