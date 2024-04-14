@@ -9,13 +9,9 @@ class CreatePayments < ActiveRecord::Migration[5.0]
       t.decimal :value
       t.string :transaction_id, limit: 254
       t.decimal :amount
-      t.decimal :amount
-      t.decimal :fee
       t.decimal :fee
       t.string :received_currency
       t.decimal :convert_rate
-      t.decimal :convert_rate
-      t.decimal :received_amount
       t.decimal :received_amount
       t.integer :status
       t.text :details
