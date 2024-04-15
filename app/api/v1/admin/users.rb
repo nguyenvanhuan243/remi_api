@@ -35,6 +35,24 @@ class API::V1::Admin::Users < Grape::API
         error!('Your email or password not correct', 400) if user.nil?
         present access_token: 'Bearer ' + Authenticate.issue({ user_id: user.id })
       end
+
+      desc 'Delete a user',
+        entity: API::Entities::V1::User
+      params do
+        use :authorization_token
+        requires :id, type: Integer, desc: 'User ID'
+      end
+      delete ':id' do
+        authenticate_admin!
+        user = User.find_by(id: params[:id])
+        error!('User not found', 404) if user.nil?
+
+        if user&.destroy
+          present { message: 'User deleted successfully' }
+        else
+          error!('Can not delete this user', 400)
+        end
+      end
     end
   end
 end
