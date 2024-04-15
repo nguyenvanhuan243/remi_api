@@ -8,6 +8,9 @@ class API::V1::Admin::Users < Grape::API
       params do
       end
       get do
+        if params[:user_type] == "admin"
+          return present User.admin.all, with: API::Entities::V1::User
+        end
         present User.normal.all, with: API::Entities::V1::User
       end
 
