@@ -3,7 +3,6 @@ class API::V1::Admin::Users < Grape::API
 
   namespace :admin do
     resource :users do
-
       desc 'Get user list',
            entity: API::Entities::V1::User
       params do
