@@ -12,6 +12,15 @@ module API
         error!('401 Unauthorized', 401)
       end
 
+      def authenticate_admin!
+        error!('401 Unauthorized', 401) if bearer_token.nil?
+        user_id = Authenticate.decode(bearer_token)['user_id']
+        user ||= User.admin.find_by(id: user_id)
+        return user if user
+
+        error!('401 Unauthorized', 401)
+      end
+
       params :authorization_token do
         optional :Authorization, type: String, desc: 'Access Token', documentation: { param_type: :header }
       end

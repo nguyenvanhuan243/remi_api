@@ -11,6 +11,10 @@ module API
       mount API::V1::Movies
       mount API::V1::Reactions
       mount API::V1::Payments
+
+      # Admin
+      mount API::V1::Admin::Users
+      mount API::V1::Admin::Movies
       add_swagger_documentation(api_version: version, hide_format: true, hide_documentation_path: true)
     end
   end
