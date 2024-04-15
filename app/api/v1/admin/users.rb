@@ -48,7 +48,7 @@ class API::V1::Admin::Users < Grape::API
         error!('User not found', 404) if user.nil?
 
         if user&.destroy
-          present { message: 'User deleted successfully' }
+          present message: 'User deleted successfully'
         else
           error!('Can not delete this user', 400)
         end
