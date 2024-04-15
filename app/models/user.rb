@@ -11,6 +11,11 @@
 #
 # User
 class User < ApplicationRecord
+  # == Extensions ===========================================================
+  enum user_type: {
+    normal: 0,
+    admin: 1
+  }
   # == Relationships ========================================================
   has_many :movies, dependent: :destroy
   has_many :assets, dependent: :destroy
@@ -22,5 +27,4 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, presence: true
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-
 end

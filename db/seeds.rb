@@ -5,3 +5,10 @@
 # #
 # #   movies = Movie.create([{ name: 'Star Wars', { name: 'Lord of the Rings'])
 # #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.create!(
+  user_type: User.user_types[:admin],
+  email: 'admin@gmail.com',
+  password: Digest::MD5.hexdigest('admin1234')
+) if User.admin.size == 0
