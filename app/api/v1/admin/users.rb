@@ -3,6 +3,15 @@ class API::V1::Admin::Users < Grape::API
 
   namespace :admin do
     resource :users do
+
+      desc 'Get user list',
+           entity: API::Entities::V1::User
+      params do
+      end
+      get do
+        present User.normal.all, with: API::Entities::V1::User
+      end
+
       desc 'Get one user',
            entity: API::Entities::V1::User
       params do
