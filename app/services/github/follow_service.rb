@@ -2,7 +2,9 @@ require 'octokit'
 
 class Github::FollowService
   def initialize
-    @client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
+    @client = Octokit::Client.new(
+      access_token: ENV['GITHUB_ACCESS_TOKEN']
+    )
   end
 
   def follow_user(target_username)
