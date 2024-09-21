@@ -2,7 +2,7 @@ require 'octokit'
 
 class Github::FollowService
   def initialize
-    @client = github_client
+    @client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
   end
 
   def follow_user(target_username)
@@ -21,12 +21,4 @@ class Github::FollowService
     puts "Fail #{target_username}"
   end
 
-  private
-
-  def github_client
-    token = ENV['GITHUB_ACCESS_TOKEN']
-    raise StandardError, 'GitHub access token not found in environment variables' if token.nil? || token.empty?
-
-    Octokit::Client.new(access_token: token)
-  end
 end
