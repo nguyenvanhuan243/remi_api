@@ -7,6 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'grape'
+gem 'octokit'
 gem 'grape-entity'
 gem 'grape-rails-cache'
 gem 'grape-swagger'
